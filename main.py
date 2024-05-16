@@ -8,7 +8,7 @@ import random
 
 class Body:
     """Represents a celestial body in the three-body simulation."""
-    def init(self, mass, position, velocity):
+    def __init__(self, mass, position, velocity):
         self.mass = mass
         self.position = np.array(position, dtype=np.float64)
         self.velocity = np.array(velocity, dtype=np.float64)
@@ -20,8 +20,8 @@ class ThreeBodySimulation(Widget):
     BODY_SIZE = 20  # Increase the visual size of the bodies
     SCALE_MARGIN = 0.3  # Zoom out margin factor
 
-    def init(self, **kwargs):
-        super().init(**kwargs)
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
         # Initialize the celestial bodies with more randomness in positions
         random_margin = 100  # Adjust this value to change randomness
         self.bodies = [
@@ -94,7 +94,6 @@ class ThreeBodySimulation(Widget):
                 (position[0] - x_min) * self.scale_factor,
                 (position[1] - y_min) * self.scale_factor
             )
-
 
         with self.canvas:
             for i, body in enumerate(self.bodies):
